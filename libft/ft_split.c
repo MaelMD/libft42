@@ -9,6 +9,7 @@
 /*   Updated: 2021/11/14 19:42:15 by mmohamme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	count_word(char const *s, char c)
@@ -55,13 +56,11 @@ int	ft_count_and_alloc(char *s, char c)
 	return (cp);
 }
 
-int	ft_split_2(char const *s, char c, char **str)
+int	ft_split_2(char const *s, char c, char **str, int i)
 {
-	int	i;
 	int	j;
 	int	k;
 
-	i = 0;
 	j = 0;
 	while (s[i])
 	{
@@ -89,16 +88,14 @@ int	ft_split_2(char const *s, char c, char **str)
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
-	int		i;
 	int		j;
 
 	if (!s)
 		return (NULL);
-	i = 0;
 	str = (char **)malloc(sizeof(char *) * count_word(s, c) + 1);
 	if (!str)
 		return (NULL);
-	j = ft_split_2(s, c, str);
+	j = ft_split_2(s, c, str, 0);
 	if (j != -1)
 	{
 		while (j >= 0)
